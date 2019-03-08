@@ -11,6 +11,7 @@ import { registerFormatter } from './providers/formatter';
 import { registerHighlightProvider } from './providers/highlight';
 import { registerIntellisenseProvider } from './providers/intellisense';
 import { registerLinters } from './providers/linters';
+import { registerRefactoringProvider } from './providers/refactor';
 import { registerTaskProvider } from './task/rake';
 
 const DOCUMENT_SELECTOR: { language: string; scheme: string }[] = [
@@ -41,6 +42,7 @@ export function activate(context: ExtensionContext): void {
 	// Register providers
 	registerCompletionProvider(context, DOCUMENT_SELECTOR);
 	registerConfigurationProvider();
+	registerRefactoringProvider(context);
 
 	if (workspace.rootPath) {
 		registerIntellisenseProvider(context);
